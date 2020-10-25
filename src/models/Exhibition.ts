@@ -1,9 +1,15 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn} from 'typeorm';
-
+/* import {Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn} from 'typeorm'; */
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
 import Image from './Image';
 
-@Entity('orphanages')
-export default class Orphanage {
+@Entity('exhibitions')
+export default class Exhibition {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -28,9 +34,9 @@ export default class Orphanage {
   @Column()
   open_on_weekends: boolean;
 
-  @OneToMany(() => Image, (image) => image.orphanage, {
+  @OneToMany(() => Image, (image) => image.exhibition, {
     cascade: ['insert', 'update'],
   })
-  @JoinColumn({ name: 'orphanage_id' })
+  @JoinColumn({ name: 'exhibition_id' })
   images: Image[];
 }

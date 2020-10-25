@@ -2,13 +2,13 @@ import { Router } from 'express';
 import multer from 'multer';
 
 import uploadConfig from './config/upload';
-import OrphanagesController from './controllers/OrphanagesController';
+import ExhibitionsController from './controllers/ExhibitionsController';
 
 const routes = Router();
 const upload = multer(uploadConfig);
 
-routes.get('/orphanages', OrphanagesController.index);
-routes.get('/orphanages/:id', OrphanagesController.show);
-routes.post('/orphanages', upload.array('images'), OrphanagesController.create);
+routes.get('/exhibitions', ExhibitionsController.index);
+routes.get('/exhibitions/:id', ExhibitionsController.show);
+routes.post('/exhibitions', upload.array('images'), ExhibitionsController.create);
 
 export default routes;

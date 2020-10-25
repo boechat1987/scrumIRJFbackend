@@ -2,32 +2,32 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import * as Yup from 'yup';
 
-import Orphanage from '../models/Orphanage';
-import orphanageView from '../views/orphanages_view';
+import Exhibition from '../models/Exhibition';
+import exhibitionView from '../views/exhibitions_view';
 
 export default {
   async index(req: Request, res: Response) {
-    const orphanagesRepository = getRepository(Orphanage);
+    const exhibitionsRepository = getRepository(Exhibition);
 
-    const orphanages = await orphanagesRepository.find({
+    const exhibitions = await exhibitionsRepository.find({
       relations: ['images'],
     });
 
-    return res.json(orphanageView.renderMany(orphanages));
+    return res.json(exhibitionView.renderMany(exhibitions));
   },
   async show(req: Request, res: Response) {
     const { id } = req.params;
 
-    const orphanagesRepository = getRepository(Orphanage);
+    const exhibitionsRepository = getRepository(Exhibition);
 
-    const orphanage = await orphanagesRepository.findOneOrFail(id, {
+    const exhibition = await exhibitionsRepository.findOneOrFail(id, {
       relations: ['images'],
     });
 
-    return res.json(orphanageView.render(orphanage));
+    return res.json(exhibitionView.render(exhibition));
   },
   async create(req: Request, res: Response) {
-    const orphanagesRepository = getRepository(Orphanage);
+    const exhibitionsRepository = getRepository(Exhibition);
 
     const requestImages = req.files as Express.Multer.File[];
 
@@ -58,14 +58,14 @@ export default {
       { abortEarly: false }
     );
 
-    const orphanage = orphanagesRepository.create({
+    const exhibition = exhibitionsRepository.create({
       ...req.body,
       open_on_weekends,
       images,
     });
 
-    await orphanagesRepository.save(orphanage);
+    await exhibitionsRepository.save(exhibition);
 
-    return res.status(201).json(orphanage);
+    return res.status(201).json(exhibition);
   },
 };
