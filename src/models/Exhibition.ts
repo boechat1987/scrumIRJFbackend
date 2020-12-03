@@ -1,11 +1,8 @@
-/* import {Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn} from 'typeorm'; */
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany,
-  JoinColumn,
-} from 'typeorm';
+import { Entity } from "typeorm";
+import { Column } from "typeorm";
+import { PrimaryGeneratedColumn } from "typeorm";
+import { OneToMany } from "typeorm";
+import {JoinColumn} from "typeorm";
 import Image from './Image';
 
 @Entity('exhibitions')
@@ -33,6 +30,9 @@ export default class Exhibition {
 
   @Column()
   open_on_weekends: boolean;
+
+  @Column({ default: false })
+  check: boolean;
 
   @OneToMany(() => Image, (image) => image.exhibition, {
     cascade: ['insert', 'update'],

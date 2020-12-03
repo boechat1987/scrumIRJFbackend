@@ -47,6 +47,11 @@ export class createExhibitions1603604777839 implements MigrationInterface {
                 type: 'boolean',
                 default: false,
               },
+              {
+                name: 'check',
+                type: 'boolean',
+                default: false,
+              },
             ],
           })
         );

@@ -6,7 +6,8 @@ import Exhibition from '../models/Exhibition';
 import exhibitionView from '../views/exhibitions_view';
 
 export default {
-  async index(req: Request, res: Response) {
+  
+  /* async index(req: Request, res: Response) {
     const exhibitionsRepository = getRepository(Exhibition);
 
     const exhibitions = await exhibitionsRepository.find({
@@ -14,7 +15,20 @@ export default {
     });
 
     return res.json(exhibitionView.renderMany(exhibitions));
-  },
+  }, */
+
+    async index(_: any, response: Response) {
+      const exhibitionRepository = getRepository(Exhibition);
+      const exhibition = await exhibitionRepository.find({
+        where: {
+          check: false,
+        },
+        relations: ['images'],
+      });
+  
+      return response.status(200).json(exhibitionView.renderMany(exhibition));
+    },
+
   async show(req: Request, res: Response) {
     const { id } = req.params;
 
