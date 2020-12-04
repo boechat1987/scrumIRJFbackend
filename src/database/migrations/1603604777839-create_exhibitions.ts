@@ -52,6 +52,10 @@ export class createExhibitions1603604777839 implements MigrationInterface {
                 type: 'boolean',
                 default: false,
               },
+              {
+                name: 'category_of_art',
+                type: 'varchar',
+              },
             ],
           })
         );

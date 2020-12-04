@@ -11,6 +11,7 @@ export default {
       about: exhibition.about,
       instructions: exhibition.instructions,
       opening_hours: exhibition.opening_hours,
+      category_of_art: exhibition.category_of_art,
       open_on_weekends: exhibition.open_on_weekends,
       images: imagesView.renderMany(exhibition.images),
     };

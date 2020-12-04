@@ -34,6 +34,9 @@ export default class Exhibition {
   @Column({ default: false })
   check: boolean;
 
+  @Column()
+  category_of_art: string;
+
   @OneToMany(() => Image, (image) => image.exhibition, {
     cascade: ['insert', 'update'],
   })
