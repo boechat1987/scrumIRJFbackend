@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 
 import Exhibition from '../models/Exhibition';
 import exhibitionView from '../views/exhibitions_view';
+import exhibitionViewName from '../views/exhibitions_view_name';
 
 export default {
   
@@ -27,6 +28,17 @@ export default {
       });
   
       return response.status(200).json(exhibitionView.renderMany(exhibition));
+    },
+
+    async exhibitionName(req: Request, response: Response) {
+      const { name } = req.params;
+      const exhibitionRepository = getRepository(Exhibition);
+      const exhibition = await exhibitionRepository.findOneOrFail({
+        where: {
+          name: name,
+        }
+      });
+      return exhibition;
     },
 
   async show(req: Request, res: Response) {
