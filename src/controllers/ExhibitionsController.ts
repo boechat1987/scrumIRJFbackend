@@ -38,7 +38,7 @@ export default {
           name: name,
         }
       });
-      return exhibition;
+      return response.status(200).json(exhibitionViewName.render(exhibition));
     },
 
   async show(req: Request, res: Response) {

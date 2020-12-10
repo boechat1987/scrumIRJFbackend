@@ -8,7 +8,7 @@ const routes = Router();
 const upload = multer(uploadConfig);
 
 routes.get('/exhibitions', ExhibitionsController.index);
-routes.get('/exhibitions/:name', ExhibitionsController.exhibitionName);
+routes.get('/exhibitions/name/:name', ExhibitionsController.exhibitionName);
 routes.get('/exhibitions/:id', ExhibitionsController.show);
 routes.post('/exhibitions', upload.array('images'), ExhibitionsController.create);
 
