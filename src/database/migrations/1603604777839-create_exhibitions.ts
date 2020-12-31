@@ -56,6 +56,11 @@ export class createExhibitions1603604777839 implements MigrationInterface {
                 name: 'category_of_art',
                 type: 'varchar',
               },
+              {
+                name: 'telephone',
+                type: 'decimal',
+                precision: 13,
+              },
             ],
           })
         );

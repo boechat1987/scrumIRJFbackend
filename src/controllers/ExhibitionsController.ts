@@ -70,6 +70,7 @@ export default {
       opening_hours: Yup.string().required(),
       category_of_art: Yup.string().required(),
       open_on_weekends: Yup.boolean().required(),
+      telephone: Yup.number().required(),
       images: Yup.array(
         Yup.object().shape({
           path: Yup.string().required(),

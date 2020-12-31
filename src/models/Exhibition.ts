@@ -37,6 +37,9 @@ export default class Exhibition {
   @Column()
   category_of_art: string;
 
+  @Column()
+  telephone: number;
+
   @OneToMany(() => Image, (image) => image.exhibition, {
     cascade: ['insert', 'update'],
   })

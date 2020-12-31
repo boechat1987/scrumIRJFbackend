@@ -13,6 +13,7 @@ export default {
       opening_hours: exhibition.opening_hours,
       category_of_art: exhibition.category_of_art,
       open_on_weekends: exhibition.open_on_weekends,
+      telephone: exhibition.telephone,
       images: imagesView.renderMany(exhibition.images),
     };
   },
